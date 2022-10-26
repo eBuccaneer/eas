@@ -1,0 +1,50 @@
+seed: 1
+outPath: "../out"
+useMetrics: true
+usePprof: false
+printLogToConsole: true
+printAuditLogToConsole: false
+printMemStats: true
+endTime: 300000000000 # nanos
+# 300000000000 5 min
+# 3600000000000 1 hour
+# 86400000000000 1 day
+nodeCount: 200 # overall node count in the simulation including mining pools and attacker nodes
+simulateTransactionCreation: false # simulates the creation and propagation of all transactions, simulation is really expensive with this set to true; if false, intentionally created transactions like i.e. from an attacker are propagated nonetheless
+checkPastTxWhenVerifyingState: false # if true, all txs are checked if they are already contained in the past tx when verifying the state of a block, disable for speedup if this cannot happen in the simulation
+auditLogTxMessages: true # works only if transaction propagation events are fired, much space needed with this and simulateTransactionCreation set to true
+txPerMin: 1000 # works only if simulateTransactionPropagation == true as otherwise no tx creation events are fired
+noneNodeUsers: 100 # these (and all normal nodes) are the originators of txs
+maxUncleDist: 7
+bombDelay: 9000000 # inactive as difficulty adjustment is not implemented
+overallHashPower: 863020000 # in MH/s (make sure there is enough room for pools, attackers and remaining nodes (min 1000MH for each of the latter))
+miningPoolsHashPower: [255060000, 149980000, 90850000, 69130000, 52640000, 34590000, 33110000, 30600000, 21240000, 17230000, 14270000, 14090000, 11630000, 10020000, 6850000, 6460000, 6460000, 5290000, 4790000, 3850000, 3370000, 3050000, 2650000, 1930000, 1770000, 1660000, 1610000, 1510000, 1430000, 1290000, 966690, 947590, 652980, 419190, 342780, 227520, 216540, 132350, 80410, 54750, 48330, 43450, 42240, 41090, 40990, 36390, 33960, 20790, 14870, 14550, 9800, 9650, 5700, 1750, 1280, 1120, 825, 613, 443] # in MH/s
+#miningPoolsHashPower: [149980000, 90850000, 69130000, 34590000, 33110000, 30600000, 21240000, 17230000, 14270000, 14090000, 11630000, 10020000, 6850000, 6460000, 6460000, 5643000, 5290000, 4790000, 3850000, 3370000, 3050000, 2650000, 1930000, 1770000, 1660000, 1610000, 1510000, 1430000, 1290000, 966690, 947590, 652980, 419190, 342780, 227520, 216540, 132350, 80410, 54750, 48330, 43450, 42240, 41090, 40990, 36390, 33960, 20790, 14870, 14550, 9800, 9650, 5700, 1750, 1280, 1120, 825, 613, 443] # in MH/s
+miningPoolsCpuPower: [4450, 4300, 4400, 3900, 4150, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900, 4150, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900, 4150, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900, 4150, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900, 4150, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900] # abstract CPU power in MHz #
+#miningPoolsCpuPower: [4300, 4400, 3900, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900, 4150, 4050, 4150, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900, 4150, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900, 4150, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900, 4150, 4050, 4200, 3800, 4500, 3600, 3850, 4450, 4300, 4400, 3900] # abstract CPU power in MHz #
+blockNephewReward: 0.0625 # eth
+blockReward: 2 # eth
+limits:
+  initialGasLimit: 12500000
+  minTxGas: 21000
+sizes: # bytes
+  hash: 42
+  tx: 200
+  getHeaders: 54
+  header: 90
+attackerActive: true
+attacker:
+  #type: "verifiersDilemma"
+  #type: "verifiersDilemmaForced"
+  type: "selfishMining"
+  hashPower: [255060000]
+  #hashPower: [302057000]
+  maxPeers: [75]
+  cpuPower: [4400]
+  location: ["Ireland"]
+  numbers:
+    percentOfGasToForceVerifiersDilemma: 0.5 # 0.5 = 50%
+    percentOfMaxGasLimitIncrease: 0.0 # 0.5 = 0.5 * parentGasLimit/1024
+    specialTxStateComputation: 2280.0 # 10230.0 # 47.61
+  strings:
+    testString: "Hi" # just for testing

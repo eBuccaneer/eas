@@ -1,0 +1,166 @@
+locations:
+  Tokio:
+    Tokio:
+      latency: # ms
+        distribution: lognorm
+        params:
+          - -0.6492601754237427
+          - 0.09577031701337546
+      sendThroughput: # mbps
+        distribution: gamma
+        params:
+          - 49.94349786281565
+          - 0.11859680175780735
+      receiveThroughput: # mbps
+        distribution: gamma
+        params:
+          - 49.893438353289
+          - 0.11949707026288697
+    Ireland:
+      latency:
+        distribution: norm
+        params:
+          - 222
+          - 0.000000000000005301592619562191
+      sendThroughput:
+        distribution: gamma
+        params:
+          - 74.59395106047405
+          - 2.395749575793742
+      receiveThroughput:
+        distribution: gamma
+        params:
+          - 111.94889901518795
+          - 3.59116760253906
+    Ohio:
+      latency:
+        distribution: uniform
+        params:
+          - 155
+          - 157
+      sendThroughput:
+        distribution: norm
+        params:
+          - 61.2494357971314
+          - 14.78131405107846
+      receiveThroughput:
+        distribution: norm
+        params:
+          - 58.33332812489563
+          - 14.770520363010117
+  Ireland:
+    Ireland:
+      latency:
+        distribution: lognorm
+        params:
+          - 0.013111341501152469
+          - 0.05382936134631561
+      sendThroughput:
+        distribution: lognorm
+        params:
+          - 6.077781223913004
+          - 0.250891532897607
+      receiveThroughput:
+        distribution: gamma
+        params:
+          - 22.156734395988906
+          - 0.049076686678163256
+    Tokio:
+      latency:
+        distribution: norm
+        params:
+          - 222
+          - 0.000000000000005301592619562191
+      sendThroughput:
+        distribution: gamma
+        params:
+          - 74.59395106047405
+          - 2.395749575793742
+      receiveThroughput:
+        distribution: gamma
+        params:
+          - 111.94889901518795
+          - 3.59116760253906
+    Ohio:
+      latency:
+        distribution: norm
+        params:
+          - 84.6732887358493
+          - 0.08653429632523468
+      sendThroughput:
+        distribution: gamma
+        params:
+          - 9.787573446109892
+          - 0.1385155169665812
+      receiveThroughput:
+        distribution: gamma
+        params:
+          - 6.565283355712892
+          - 0.09
+  Ohio:
+    Ohio:
+      latency:
+        distribution: lognorm
+        params:
+          - -0.6417829001164197
+          - 0.11782830914498797
+      sendThroughput:
+        distribution: gamma
+        params:
+          - 74.77728455126282
+          - 0.14955179631710092
+      receiveThroughput:
+        distribution: gamma
+        params:
+          - 74.88645660602555
+          - 0.14703122690352527
+    Tokio:
+      latency:
+        distribution: uniform
+        params:
+          - 155
+          - 157
+      sendThroughput:
+        distribution: norm
+        params:
+          - 61.2494357971314
+          - 14.78131405107846
+      receiveThroughput:
+        distribution: norm
+        params:
+          - 58.33332812489563
+          - 14.770520363010117
+    Ireland:
+      latency:
+        distribution: norm
+        params:
+          - 84.6732887358493
+          - 0.08653429632523468
+      sendThroughput:
+        distribution: gamma
+        params:
+          - 9.787573446109892
+          - 0.1385155169665812
+      receiveThroughput:
+        distribution: gamma
+        params:
+          - 6.565283355712892
+          - 0.09
+timeBetweenBlocks: # seconds
+  distribution: exp # fixed to exp, do not change
+  params:
+    - 12.91017 # this is the targeted mean block time (including uncles!)
+txGas: # tx gas will be a random var out of this + min tx gas (min tx gas is set in config.yml)
+  distribution: norm
+  params:
+    - 21841
+    - 32762
+gasPrice: # gwei
+  distribution: uniform
+  params:
+    - 91
+    - 40
+txStateComputation: 10230 # gas per Mhz per s
+baseHeaderVerification: 100 # headers per Mhz per s
+baseBodyVerification: 100 # bodies per Mhz per s
+baseTxVerification: 1000 # TXs per Mhz per s

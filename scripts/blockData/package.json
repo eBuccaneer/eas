@@ -1,0 +1,16 @@
+{
+  "name": "blockData",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js",
+    "computeBlockTimesWithUncles": "node computeBlocktimesWithUncles.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "web3": "^1.2.2"
+  }
+}
